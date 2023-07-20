@@ -7,6 +7,7 @@ import SearchGiph from "./SearchGiph/SearchGiph";
 
 function App() {
   const [search, setSearch] = useState('eagle')
+  const [giphImg, setGiphImg] = useState('')
 
  const handleSearch = (searchTerm) => {
   setSearch(searchTerm)
@@ -22,7 +23,9 @@ function App() {
 
         const data = await apiResponse.json()
 
-        console.log(data)
+        console.log(data.data[0].images.fixed_width_small.url)
+
+        setGiphImg(data.data[0].images.fixed_width_small.url) //
   
       } catch (e) {
         console.log(e, 'error from API call')
@@ -33,13 +36,13 @@ function App() {
     
     }, [search]);
 
-    // image={imageUrl}
+    // 
 
   return (
     <>
     <p>The user is searching for {search}</p>
       <SearchGiph searchGiph={handleSearch} />
-      <GiphImage  />
+      <GiphImage image={giphImg} />
     </>
   );
 }

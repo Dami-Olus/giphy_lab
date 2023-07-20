@@ -6,7 +6,7 @@ import GiphImage from "./GiphImage/GiphImage";
 import SearchGiph from "./SearchGiph/SearchGiph";
 
 function App() {
-  const [search, setSearch] = useState('cat')
+  const [search, setSearch] = useState('eagle')
 
  const handleSearch = (searchTerm) => {
   setSearch(searchTerm)
@@ -31,14 +31,15 @@ function App() {
 
     getGiphy()
     
-    }, []);
+    }, [search]);
 
-    
+    // image={imageUrl}
 
   return (
     <>
-      <SearchGiph search={handleSearch} />
-      <GiphImage image={imageUrl} />
+    <p>The user is searching for {search}</p>
+      <SearchGiph searchGiph={handleSearch} />
+      <GiphImage  />
     </>
   );
 }

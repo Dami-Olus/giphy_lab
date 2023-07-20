@@ -1,8 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-function SearchGiph() {
+function SearchGiph({searchGiph}) {
+  const [searchTerm, setSearchTerm] = useState('')
+
+const handleSubmit = (e) => {
+  e.preventDefault()
+  console.log(searchTerm)
+  searchGiph(searchTerm)
+}
+
+const handleSearchInput = (e) => {
+  
+  setSearchTerm(e.target.value)
+}
+
   return (
-    <div>Search Giph</div>
+    <form action="" onSubmit={handleSubmit}>
+      <input type="text" placeholder='search' onChange={handleSearchInput} value={searchTerm} />
+      <button >Submit</button>
+    </form>
   )
 }
 

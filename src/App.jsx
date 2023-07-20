@@ -8,7 +8,9 @@ import SearchGiph from "./SearchGiph/SearchGiph";
 function App() {
   const [search, setSearch] = useState('cat')
 
- 
+ const handleSearch = (searchTerm) => {
+  setSearch(searchTerm)
+ }
 
 
   useEffect(() => {
@@ -35,8 +37,8 @@ function App() {
 
   return (
     <>
-      <SearchGiph />
-      <GiphImage />
+      <SearchGiph search={handleSearch} />
+      <GiphImage image={imageUrl} />
     </>
   );
 }
